@@ -1,0 +1,14 @@
+body {
+  background-color: powderblue;
+  padding: 10%;
+  font-size: 150%;
+}
+h1 {
+  color: blue;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
