@@ -2,7 +2,7 @@ package org.ugcc.people.chatbot.telegram.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class User {
+public class TelegramUser {
     /**
      * {
      *   id=122462923,
@@ -64,5 +64,9 @@ public class User {
 
     public String getFullName() {
         return "%s %s".formatted(firstName, lastName);
+    }
+
+    public String getExternalId() {
+        return "telegram" + this.getId();
     }
 }

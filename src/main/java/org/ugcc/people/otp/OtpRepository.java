@@ -15,11 +15,19 @@ public class OtpRepository {
 
     public String generateOtp(String userId) {
         String otp = "%06d".formatted(random.nextInt(1000000));
-        otps.put(userId, otp);
+        otps.put(otp, userId);
         return otp;
     }
 
-    public boolean isValidOtp(String userId, String otp) {
-        return otp.equals(otps.get(userId));
+    /**
+     * Checks if otp is valid and returns appropriate user id
+     * that is associated with it.
+     *
+     * @param otp one-time password string
+     * @return user id associated with the otp if otp is
+     * correct, or null otherwise
+     */
+    public String consumeOtp(String otp) {
+        return otps.remove(otp);
     }
 }

@@ -3,6 +3,15 @@ body {
   padding: 10%;
   font-size: 150%;
 }
+.form {
+    background-color: lightyellow;
+    padding: 10%;
+    border: 3px;
+    font-size: 111%;
+    width: 30%;
+    text-align: center;
+    position: relative;
+}
 h1 {
   color: blue;
 }
@@ -11,4 +20,10 @@ h1 {
 }
 .center {
   text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+button {
+    font-size: 200%;
 }

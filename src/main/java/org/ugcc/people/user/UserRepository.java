@@ -1,8 +1,12 @@
 package org.ugcc.people.user;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+
+@Component
 public class UserRepository {
     private Map<String, User> users = new HashMap<>();
 

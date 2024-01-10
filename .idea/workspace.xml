@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e6f5d4e-618b-490f-be05-d1fb859d3714" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ugcc/people/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ugcc/people/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ugcc/people/chatbot/telegram/TelegramChatbot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ugcc/people/chatbot/telegram/TelegramChatbot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ugcc/people/chatbot/telegram/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ugcc/people/chatbot/telegram/models/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ugcc/people/chatbot/telegram/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ugcc/people/chatbot/telegram/models/TelegramUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ugcc/people/otp/OtpRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ugcc/people/otp/OtpRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ugcc/people/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ugcc/people/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ugcc/people/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ugcc/people/user/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Message {
     private int messageId;
-    private User from;
+    private TelegramUser from;
     private Chat chat;
     private long date;
     private String text;
@@ -32,11 +32,11 @@ public class Message {
         this.messageId = messageId;
     }
 
-    public User getFrom() {
+    public TelegramUser getFrom() {
         return from;
     }
 
-    public void setFrom(User from) {
+    public void setFrom(TelegramUser from) {
         this.from = from;
     }
 
