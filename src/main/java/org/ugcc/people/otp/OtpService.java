@@ -8,10 +8,10 @@ import java.util.Random;
 
 
 @Component
-public class OtpRepository {
+public class OtpService {
     private Random random = new Random();
 
-    private Map<String, String> otps = new HashMap();
+    private static Map<String, String> otps = new HashMap();
 
     public String generateOtp(String userId) {
         String otp = "%06d".formatted(random.nextInt(1000000));

@@ -5,11 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.ugcc.people.chatbot.telegram.models.*;
-import org.ugcc.people.otp.OtpRepository;
+import org.ugcc.people.otp.OtpService;
 import org.ugcc.people.user.User;
 import org.ugcc.people.user.UserRepository;
-
-import java.util.Optional;
 
 @Component
 public class TelegramChatbot implements Runnable {
@@ -21,17 +19,17 @@ public class TelegramChatbot implements Runnable {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private final OtpRepository otpRepository;
+    private final OtpService otpService;
     private final UserRepository userRepository;
 
     private static final String otpEng = "otp";
 
     private static final String otpUkr = "оп";
 
-    public TelegramChatbot(OtpRepository otpRepository, UserRepository userRepository) {
+    public TelegramChatbot(OtpService otpService, UserRepository userRepository) {
         this.baseUri = "https://api.telegram.org/%s"
                 .formatted(System.getenv("telegram_bot_token"));
-        this.otpRepository = otpRepository;
+        this.otpService = otpService;
         this.userRepository = userRepository;
     }
 
@@ -58,7 +56,7 @@ public class TelegramChatbot implements Runnable {
                         user.setTelegramChatId(chatId);
                         userRepository.addUser(user);
                     }
-                    String otp = otpRepository.generateOtp(userId);
+                    String otp = otpService.generateOtp(userId);
                     String otpMessageFromBot = "Thank you, %s, for taking part in the UGCC People network. Your OTP is %s"
                             .formatted(
                                     telegramUser.getFirstName(),

@@ -2,9 +2,14 @@ package org.ugcc.people;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.ugcc.people.chatbot.telegram.TelegramChatbot;
+import org.ugcc.people.session.LoginRequest;
+import org.ugcc.people.session.LoginResponse;
+import org.ugcc.people.session.SessionService;
 
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -12,6 +17,8 @@ import org.ugcc.people.chatbot.telegram.TelegramChatbot;
 @RestController
 @SpringBootApplication
 public class Main {
+    private final SessionService sessionService;
+
     public static void main(String[] args) {
         // Press Alt+Enter with your caret at the highlighted text to see how
         // IntelliJ IDEA suggests fixing it.
@@ -19,7 +26,8 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
-    public Main(TelegramChatbot telegramChatbot){
+    public Main(TelegramChatbot telegramChatbot, SessionService sessionService){
+        this.sessionService = sessionService;
         new Thread(telegramChatbot).start();
     }
 
@@ -35,5 +43,10 @@ public class Main {
             val.append("i = " + i);
         }
         return val.toString();
+    }
+
+    @PostMapping("/api/v1/login")
+    private LoginResponse login(@RequestBody LoginRequest loginRequest) {
+        return sessionService.login(loginRequest);
     }
 }
