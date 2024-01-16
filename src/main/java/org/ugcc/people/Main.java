@@ -2,14 +2,16 @@ package org.ugcc.people;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.ugcc.people.chatbot.telegram.TelegramChatbot;
+import org.ugcc.people.country.Country;
+import org.ugcc.people.country.CountryRepository;
 import org.ugcc.people.session.LoginRequest;
 import org.ugcc.people.session.LoginResponse;
 import org.ugcc.people.session.SessionService;
+
+import java.util.Collection;
+import java.util.Map;
 
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -19,6 +21,8 @@ import org.ugcc.people.session.SessionService;
 public class Main {
     private final SessionService sessionService;
 
+    private final CountryRepository countryRepository;
+
     public static void main(String[] args) {
         // Press Alt+Enter with your caret at the highlighted text to see how
         // IntelliJ IDEA suggests fixing it.
@@ -26,8 +30,9 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
-    public Main(TelegramChatbot telegramChatbot, SessionService sessionService){
+    public Main(TelegramChatbot telegramChatbot, SessionService sessionService, CountryRepository countryRepository){
         this.sessionService = sessionService;
+        this.countryRepository = countryRepository;
         new Thread(telegramChatbot).start();
     }
 
@@ -48,5 +53,11 @@ public class Main {
     @PostMapping("/api/v1/login")
     private LoginResponse login(@RequestBody LoginRequest loginRequest) {
         return sessionService.login(loginRequest);
+    }
+
+    @RequestMapping("/api/v1/countries")
+    private Collection<Country> countries(@RequestHeader Map<String, String> headers) {
+        sessionService.hasSession(headers);
+        return countryRepository.all();
     }
 }

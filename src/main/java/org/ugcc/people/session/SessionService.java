@@ -37,4 +37,18 @@ public class SessionService {
         }
         throw new LoginError("Wrong OTP");
     }
+
+    /**
+     * Checks if given session key is valid.
+     * If it is valid, then does nothing.
+     * If invalid, then throws an InvalidSessionError.
+     *
+     * @param headers HTTP headers map
+     */
+    public void hasSession(Map<String, String> headers) {
+        logger.info("HTTP headers: {}", headers);
+        if (sessions.get(headers.get("session-key")) == null) {
+            throw new InvalidSessionError();
+        }
+    }
 }
