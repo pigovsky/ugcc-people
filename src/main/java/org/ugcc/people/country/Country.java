@@ -1,5 +1,7 @@
 package org.ugcc.people.country;
 
+import org.ugcc.people.common.Translation;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,9 +11,7 @@ public class Country {
 
     public Country(String nameEng, String nameUkr) {
         this.id = nameEng.replaceAll("\\s+", "");
-        this.name = new HashMap<>();
-        this.name.put("eng", nameEng);
-        this.name.put("ukr", nameUkr);
+        this.name = Translation.translationMap(nameEng, nameUkr);
     }
 
     public String getId() {

@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import org.ugcc.people.chatbot.telegram.TelegramChatbot;
+import org.ugcc.people.city.City;
+import org.ugcc.people.city.CityRepository;
 import org.ugcc.people.country.Country;
 import org.ugcc.people.country.CountryRepository;
 import org.ugcc.people.session.LoginRequest;
@@ -23,6 +25,8 @@ public class Main {
 
     private final CountryRepository countryRepository;
 
+    private final CityRepository cityRepository;
+
     public static void main(String[] args) {
         // Press Alt+Enter with your caret at the highlighted text to see how
         // IntelliJ IDEA suggests fixing it.
@@ -30,9 +34,10 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
-    public Main(TelegramChatbot telegramChatbot, SessionService sessionService, CountryRepository countryRepository){
+    public Main(TelegramChatbot telegramChatbot, SessionService sessionService, CountryRepository countryRepository, CityRepository cityRepository){
         this.sessionService = sessionService;
         this.countryRepository = countryRepository;
+        this.cityRepository = cityRepository;
         new Thread(telegramChatbot).start();
     }
 
@@ -57,7 +62,13 @@ public class Main {
 
     @RequestMapping("/api/v1/countries")
     private Collection<Country> countries(@RequestHeader Map<String, String> headers) {
-        sessionService.hasSession(headers);
+        sessionService.validateSession(headers);
         return countryRepository.all();
+    }
+
+    @RequestMapping("/api/v1/countries/{countryId}/cities")
+    private Collection<City> cities(@RequestHeader Map<String, String> headers, @PathVariable String countryId) {
+        sessionService.validateSession(headers);
+        return cityRepository.all(countryId);
     }
 }

@@ -45,7 +45,7 @@ public class SessionService {
      *
      * @param headers HTTP headers map
      */
-    public void hasSession(Map<String, String> headers) {
+    public void validateSession(Map<String, String> headers) {
         logger.info("HTTP headers: {}", headers);
         if (sessions.get(headers.get("session-key")) == null) {
             throw new InvalidSessionError();
