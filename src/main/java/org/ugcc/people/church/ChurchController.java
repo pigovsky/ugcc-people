@@ -28,6 +28,6 @@ public class ChurchController {
         @PathVariable String cityId
     ) {
         sessionService.validateSession(headers);
-        return churchRepository.all("%s-%s".formatted(countryId, cityId));
+        return churchRepository.all(cityId);
     }
 }
