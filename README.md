@@ -105,7 +105,7 @@ Get the churches where UGCC people take part in Holy Masses.
 `GET /api/v1/countries/Ukraine/cities/Ukraine-Kyiv/churches`
 
 where Ukraine is id of one of the countries returned by API2, 
-Kyiv is id of one of the cities returned by API3.
+Ukraine-Kyiv is id of one of the cities returned by API3.
 
 The request should be executed with session key header like
 
@@ -124,5 +124,68 @@ Response body example:
       "eng":"Saint Josaphat near the Svyatoshyn metro station"
     }
   }, ...
+]
+```
+
+
+### API5. Connect a person to a church
+
+Get the churches where UGCC people take part in Holy Masses.
+
+`POST /api/v1/countries/Ukraine/cities/Ukraine-Kyiv/churches/Ukraine-Kyiv-Yosafata/people`
+
+where Ukraine is id of one of the countries returned by API2, 
+Ukraine-Kyiv is id of one of the cities returned by API3,
+Ukraine-Kyiv-Yosafata is the id of a church from the API4.
+
+The request should be executed with session key header like
+
+`session-key: 07ea607a-be00-44ea-aa93-6870e7c57e24'`
+
+where session-key value is taken from API1.
+
+Request body example:
+```json
+{
+  "lastVisit": "every-Sunday"
+}
+```
+where "lastVisit" describes how often the user, that issues the request, attends the specified church. It can be "every-day", "every-Sunday", "few-times-a-month", "every-year", or a date like "2024-05-31" meaning that the user attended the church until that date. 
+
+Response body example:
+```json
+{
+  "result": "connected"
+}
+```
+
+
+### API6. Get people that have a connection to a church
+
+`GET /api/v1/countries/Ukraine/cities/Ukraine-Kyiv/churches/Ukraine-Kyiv-Yosafata/people`
+
+where Ukraine is id of one of the countries returned by API2,
+Ukraine-Kyiv is id of one of the cities returned by API3,
+Ukraine-Kyiv-Yosafata is the id of a church from the API4.
+
+The request should be executed with session key header like
+
+`session-key: 07ea607a-be00-44ea-aa93-6870e7c57e24'`
+
+where session-key value is taken from API1.
+
+Response body example:
+```json
+[
+  {
+    "id": "86574873",
+    "name": "o. Wasyl Dragomyrezki",
+    "lastVisit": "every-day"
+  },
+  {
+    "id": "23792749",
+    "name": "Jurij Pigowski",
+    "lastVisit": "2021-11-30"
+  }
 ]
 ```
