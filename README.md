@@ -130,7 +130,7 @@ Response body example:
 
 ### API5. Connect a person to a church
 
-Get the churches where UGCC people take part in Holy Masses.
+Add a person that takes part in Holy Masses to a church.
 
 `POST /api/v1/countries/Ukraine/cities/Ukraine-Kyiv/churches/Ukraine-Kyiv-Yosafata/people`
 
@@ -155,7 +155,9 @@ where "lastVisit" describes how often the user, that issues the request, attends
 Response body example:
 ```json
 {
-  "result": "connected"
+  "id": "23792749",
+  "name": "Jurij Pigowski",
+  "lastVisit": "every-Sunday"
 }
 ```
 
@@ -186,6 +188,7 @@ Response body example:
     "id": "23792749",
     "name": "Jurij Pigowski",
     "lastVisit": "2021-11-30"
-  }
+  },
+  ...
 ]
 ```

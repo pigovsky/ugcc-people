@@ -40,15 +40,18 @@ public class SessionService {
 
     /**
      * Checks if given session key is valid.
-     * If it is valid, then does nothing.
+     * If it is valid, then return user id associated with it.
      * If invalid, then throws an InvalidSessionError.
      *
      * @param headers HTTP headers map
+     * @return id of user that opened the session
      */
-    public void validateSession(Map<String, String> headers) {
+    public String validateSession(Map<String, String> headers) {
         logger.info("HTTP headers: {}", headers);
-        if (sessions.get(headers.get("session-key")) == null) {
+        String userId = sessions.get(headers.get("session-key"));
+        if (userId == null) {
             throw new InvalidSessionError();
         }
+        return userId;
     }
 }
