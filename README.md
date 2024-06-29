@@ -192,3 +192,39 @@ Response body example:
   ...
 ]
 ```
+
+
+### API7. Send a message to a person
+
+`POST /api/v1/countries/Ukraine/cities/Ukraine-Kyiv/churches/Ukraine-Kyiv-Yosafata/people/23792749/messages`
+
+where Ukraine is id of one of the countries returned by API2,
+Ukraine-Kyiv is id of one of the cities returned by API3,
+Ukraine-Kyiv-Yosafata is the id of a church from the API4,
+23792749 is a person id returned by API6.
+
+The request should be executed with session key header like
+
+`session-key: 07ea607a-be00-44ea-aa93-6870e7c57e24'`
+
+where session-key value is taken from API1.
+
+Request body example:
+```json
+{
+  "text": "At what time is a Holy Mass this Sunday?"
+}
+```
+
+Response body example:
+```json
+{
+  "status": "delivered"
+}
+```
+
+
+## Join our team
+
+https://invite.viber.com/?g2=AQBAotW2LqDexk%2B44HLbVMjflOcjORzQxlc3c1kjx8xrR7EX8px6rnzPOsWt%2BiZ8&lang=en
+
